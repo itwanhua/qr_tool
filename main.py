@@ -16,6 +16,7 @@ def home():
 
     # #第三步：在页面上显示二维码图片
     # return '<img src ="/static/qr.png" />'
+    #第一次修改
 
 
 
