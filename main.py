@@ -1,8 +1,12 @@
 import flask
 import qrcode
 
+from datetime import timedelta
+
 
 app = flask.Flask(__name__)
+
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
 @app.route('/')
 
@@ -25,11 +29,12 @@ def home():
 
 @app.route('/qr',methods=["POST"])
 def qr():
-    data = flask.request.form.get('data')
+    data = flask.request.form.get("data")
     img = qrcode.make(data)
-    img.save(r"C:\Users\Administrator\Desktop\二维码生成器\static\qr.png")
 
-    return '<img src ="/static/qr.png" />'
+    img.save(r"C:\Users\Administrator\Desktop\二维码生成器\static\qrc.png")
+
+    return '<img src ="/static/qrc.png" />'
 
 
 if __name__ == '__main__':
