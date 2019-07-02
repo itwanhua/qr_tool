@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <meta charset="UTF-8">
-            <!-- <meta name="viewport" content=""> -->
-            <title>在线二维码生成器</title>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content=""> -->
+        <title>在线二维码生成器</title>
+        <style>
+            h1 {text-align:center;color: black}
+            form {text-align: center;}
+            body {border-image: center;background: skyblue}
+            div {text-align: center;}
+        </style>
+            
+        <h1>在线二维码生成 - IT华仔c</h1>
+        <script>
+            function gen_qrcode() {
+                //获取文本框中用户输入的数据
+                var data = document.getElementsByName("data")[0].value;
+                //获取显示二维码图片的img对象
+                var qr_img = document.getElementById("qr_img");
+                //给img对象的src属性赋值
+                qr_img.src = "/qr?data=" + data;
+            }
+    
+            function enter_key_handle() {
+                if(event.keyCode == 13) {
+                    gen_qrcode();
+                }
+            }
+        </script>
+        <div>
+            <body onkeydown="enter_key_handle()">
+                    <label>内容：</label><input name="data" type="text"><button type="button" style="margin-left: 3px;" onclick="gen_qrcode()">生成</button><br /><br /><br />
+                    <img id="qr_img" src="" />
+            </body>
+        </div>
+
+          
     </head>
-    <body>
-        <form action="/qr" method="POST">
-        <label for="内容："></label> <input name="data" type="text" style="margin-right: 0.5cm"><button type="submit" >生成</button>
-    </form>
-    </body>
 
 </html>
